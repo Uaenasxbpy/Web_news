@@ -1,6 +1,6 @@
 import sys
 import requests
-
+from news import News
 def get_news_data(i):
     init_url = 'https://feed.mix.sina.com.cn/api/roll/get?pageid=153&lid=2515&k=&num=50&page={}'  # 科技
     # init_url = 'https://feed.mix.sina.com.cn/api/roll/get?pageid=153&lid=2513&k=&num=50&page={}'#娱乐
@@ -43,8 +43,6 @@ if __name__ == "__main__":
     urls,title = scrape_news()
     print(urls)
     print(title)
-    from news import News
-
     # 创建News对象
     news_obj = News("localhost", "root", "123456", "news")
     # 调用insert_data方法写入数据
