@@ -1,6 +1,7 @@
 import sys
 import requests
 from news import News
+# 爬虫实现
 def get_news_data(i):
     init_url = 'https://feed.mix.sina.com.cn/api/roll/get?pageid=153&lid=2515&k=&num=50&page={}'  # 科技
     # init_url = 'https://feed.mix.sina.com.cn/api/roll/get?pageid=153&lid=2513&k=&num=50&page={}'#娱乐

@@ -1,5 +1,4 @@
 import pymysql
-
 class Users:
     def __init__(self, host, username, password, database):
         # 连接MySQL数据库
@@ -11,14 +10,21 @@ class Users:
         self.conn.close()
 
     def get_usernames(self):
-        # 查询所有用户名
+        """
+        查询所有用户名
+        :return:
+        """
         query = "SELECT username FROM users"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return [row[0] for row in result]
 
     def get_interests(self, username):
-        # 查询给定用户名的兴趣爱好
+        """
+        查询给定用户名的兴趣爱好
+        :param username:
+        :return:
+        """
         query = "SELECT interests FROM users WHERE username = %s"
         self.cursor.execute(query, (username,))
         result = self.cursor.fetchone()
@@ -31,7 +37,10 @@ class Users:
             return None
 
     def get_user_interests(self):
-        # 返回用户名和兴趣爱好的字典
+        """
+        返回用户名和兴趣爱好的字典
+        :return:
+        """
         query = "SELECT username, interests FROM users"
         self.cursor.execute(query)
         result = self.cursor.fetchall()

@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.cluster import KMeans
 
-
+# 聚类算法实现
 history = [
     [1, '政治'],
     [1, '科技'],
@@ -11,7 +11,6 @@ history = [
     [3, '体育'],
     [3, '科技'],
 ]
-
 # 创建一个空字典，用于存储用户的类别访问次数
 user_visits = {}
 

@@ -1,4 +1,5 @@
 import jieba
+# 新闻分类实现
 
 # 使用jieba提取关键词进行类别分析，然后返回type
 def get_top_keywords(file_path, num_keywords = 1):

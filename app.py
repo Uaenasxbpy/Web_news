@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session, redirect, url_for, f
 import mysql.connector
 from datetime import datetime
 
-#创建一个News类的对象，实现对interests标签的新闻到达选择
+# 创建一个News类的对象，实现对interests标签的新闻到达选择
 from news import News
 user_news = News("Localhost", "root", "123456", "news")
 # print(user_news.get_message("科技"))
