@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>用户浏览记录</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            padding: 2rem;
+        }
+
+        a {
+            color: #2196F3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #d64859;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: none;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1a1b1a;
+            color: white;
+        }
+
+        tbody tr {
+            background-color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>用户浏览记录</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>用户名</th>
+                <th>网址</th>
+                <th>访问时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in user_history %}
+            <tr>
+                <td>{{ session['username'] }}</td>
+                <td><a href="{{ record[0] }}" target="_blank">{{ record[0] }}</a></td>
+                <td>{{ record[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*清除浮动*/
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /* 兼容IE6&7 */
+}
+
+/*版心*/
+.w {
+    width: 1200px;
+    margin: auto;
+}
+
+body {
+    background-color: #83c1fe;
+}
+
+.header {
+    height: 42px;
+    /*层叠了上面的margin*/
+    margin: 30px auto;
+}
+
+.logo {
+    float: left;
+    width: 198px;
+    height: 42px;
+
+}
+
+li {
+    list-style: none;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav {
+    float: left;
+    margin-left: 60px;
+}
+
+.nav ul li {
+    float: left;
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    height: 42px;
+    padding: 0 10px;
+    display: block;
+    font-size: 18px;
+    line-height: 42px;
+    color: #050505;
+
+}
+
+.nav ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+    color: #00a4ff;
+}
+
+.search {
+    float: left;
+    width: 412px;
+    height: 42px;
+    margin-left: 70px;
+}
+
+.search input {
+    float: left;
+    width: 345px;
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: 0;
+    color: #bfbfbf;
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+.search button {
+    float: left;
+    width: 50px;
+    height: 42px;
+    background-color: #00a4ff;
+    border: 0;
+}
+
+.user {
+    float: right;
+    margin-right: 30px;
+    font-size: 16px;
+    color: 666;
+
+}
+
+.banner {
+    height: 421px;
+    background-color: #a9dae9;
+}
+
+.banner .w {
+    height: 421px;
+    background: url(images/banner2.png) no-repeat top center;
+}
+
+.subnav {
+    float: left;
+    width: 190px;
+    height: 421px;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.subnav ul li {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+}
+
+.subnav ul li a {
+    font-size: 14px;
+    color: white;
+
+}
+
+.subnav ul li a span {
+    float: right;
+}
+
+.subnav ul li a:hover {
+    color: #00a4ff;
+}
+
+.course {
+    float: right;
+    width: 230px;
+    height: 310px;
+    background-color: #f3f5f7;
+    /*浮动的盒子不存在外边距合并的问题*/
+    margin-top: 50px;
+}
+
+.course h2 {
+    height: 48px;
+    background-color: #9bceea;
+    font-size: 18px;
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+}
+
+.bd {
+    padding: 0 20px;
+}
+
+.bd ul li h4 {
+    font-size: 16px;
+    color: #4e4e4e;
+}
+
+.bd ul li p {
+    font-style: 12px;
+    color: #a5a5a5;
+}
+
+.bd ul li {
+    padding: 14px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.bd .more {
+    display: block;
+    height: 38px;
+    border: 1px solid #00a4ff;
+    text-align: center;
+    line-height: 38px;
+    color: #00a4ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.goods {
+    height: 60px;
+    background-color: #fff;
+    margin-top: 10px;
+    box-shadow: 0 2px 3px 3px rgba(0, 0, 0, .1);
+    line-height: 60px;
+}
+
+.goods h3 {
+    margin-left: 30px;
+    float: left;
+    font-size: 16px;
+    color: #00a4ff;
+}
+
+.goods ul {
+    float: left;
+    margin-left: 30px;
+}
+
+.goods ul li {
+    float: left;
+}
+
+.goods ul li a {
+    padding: 0 30px;
+    font-size: 16px;
+    color: #050505;
+    border-left: 1px solid #ccc;
+}
+
+.mod {
+    float: right;
+    margin-right: 30px;
+    font-size: 14px;
+    color: #00a4ff;
+}
+
+.box {
+    margin-top: 30px;
+}
+
+.box-hd {
+    height: 45px;
+
+}
+
+.box-hd h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+}
+
+.box-hd a {
+    float: right;
+    font-size: 12px;
+    color: #a5a5a5;
+    margin-top: 10px;
+    margin-right: 30px;
+}
+
+.box-bd ul {
+    width: 1225px;
+
+}
+
+.box-bd ul li {
+    position: relative;
+    width: 228px;
+    height: 270px;
+    background-color: #fff;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+/*子绝父相*/
+.box-bd ul li em {
+    position: absolute;
+    right: -2px;
+    top: 4px;
+}
+
+.box-bd ul li>img {
+    width: 100%;
+}
+
+.box-bd ul li h4 {
+    margin: 20px 20px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+
+.box-bd .info {
+    margin: 0 20px 0 25px;
+    font-size: 12px;
+    color: #999;
+}
+
+.box-bd .info span {
+    color: #ff7c2d;
+}
+
+/*第2个盒子*/
+.clear {
+    clear: both;
+}
+
+/*清除浮动*/
+.box1-hd {
+    margin-top: 30px;
+    /* background-color: #1b0909; */
+    background-color: #f3f5f7;
+}
+
+.box1-hd ul li a:hover {
+    color: #00a4ff;
+}
+
+.box1-hd {
+    height: 60px;
+    line-height: 60px;
+    box-shadow: 0 2px 3px 3px rgba(0, 0, 0, .1);
+}
+
+.box1-hd h3 {
+    margin-left: 30px;
+    float: left;
+    font-size: 20px;
+    color: #494949;
+}
+
+.box1-hd ul {
+
+    float: left;
+    margin-left: 300px;
+
+}
+
+.box1-hd ul li {
+    float: left;
+    margin-bottom: 30px;
+}
+
+.box1-hd a {
+    float: right;
+    font-size: 12px;
+    color: #a5a5a5;
+    margin-right: 30px;
+}
+
+.box1-hd ul li a {
+    font-size: 16px;
+    color: #a5a5a5;
+
+}
+
+.box1-bd .first {
+    width: 230px;
+    height: 390px;
+    float: left;
+}
+
+.box1-bd .second {
+    width: 960px;
+    height: 390px;
+    float: right;
+}
+
+.box1-bd .second .top {
+    width: 960px;
+    height: 100px;
+}
+
+.box1-bd img {
+    width: 100%;
+}
+
+.box1-bd .second .bottom {
+    margin-top: 24px;
+    width: 960px;
+    height: 270px;
+    background-color: #f3f5f7;
+}
+
+.box1-bd .second .bottom ul li {
+    width: 230px;
+    height: 270px;
+    float: left;
+    margin-right: 13px;
+    background-color: #fff;
+}
+
+.box1-bd .second .bottom .right {
+    margin-right: 0;
+}
+
+.box1-bd ul li h4 {
+    margin: 20px 20px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+
+.box1-bd .info {
+    margin: 0 20px 0 25px;
+    font-size: 12px;
+    color: #999;
+}
+
+.box1-bd .info span {
+    color: #ff7c2d;
+}
+
+/*footer*/
+.footer {
+    height: 415px;
+    background-color: #fff;
+    margin-top: 30px;
+}
+
+.footer .w {
+    padding-top: 35px;
+}
+
+.footer .copyright {
+    float: left;
+}
+
+.footer .links {
+    float: right;
+}
+
+.copyright p {
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.copyright .app {
+    display: block;
+    width: 118px;
+    height: 33px;
+    border: 1px solid #00a4ff;
+    line-height: 33px;
+    text-align: center;
+    color: #00a4ff;
+    font-size: 16px;
+}
+
+.links dl {
+    float: left;
+    margin-left: 100px;
+}
+
+.links dl dt {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.links dl dd a {
+    font-size: 12px;
+    color: #333;
+}

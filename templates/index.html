@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>主页</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            background-color: #333;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .nav {
+            background-color: rgb(153, 134, 134);
+            color: #fff;
+            padding: 5px 10px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        header div {
+            display: flex;
+            align-items: center;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        header button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .interests {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        li {
+            background-color: #eee;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .right p {
+            margin-right: 20px;
+        }
+
+        .introduce {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            background-color: #f9f9f9;
+            width: 200px;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: red;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .username {
+            border: 2px solid #333;
+            /* 添加边框 */
+            padding: 5px 10px;
+            /* 添加内边距 */
+            border-radius: 10px;
+            /* 添加圆角 */
+            background-color: #eee;
+            /* 添加背景颜色 */
+            display: inline-block;
+            /* 将元素显示为行内块 */
+            font-size: 16px;
+            /* 字体大小 */
+            color: #333;
+            /* 字体颜色 */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="right">
+            <p class="username">{{ username }}</p>
+            <button class="nav" onclick="refreshPage()">刷新</button>
+            <button class="nav">
+                <a href="{{ url_for('signup') }}" target="_blank" style="text-decoration:none;">退出</a>
+            </button>
+            <button class="nav">
+                <a href="{{ url_for('signup') }}" target="_blank" style="text-decoration:none;">注销</a>
+            </button>
+            <button class="nav">
+                <a href="{{ url_for('about') }}" target="_blank" style="text-decoration:none;">关于我们</a>
+            </button>
+            <button class="nav">
+                <a href="{{ url_for('history') }}" target="_blank" style="text-decoration:none;">历史记录</a>
+            </button>
+        </div>
+        <h1>个人主页</h1>
+    </header>
+    <div class="container">
+        <div class="interests">
+            <p class=" introduce">您的兴趣爱好:</p>
+            <ul>
+                {% for interest, news_list in news_dict.items() %}
+                <h2>{{ interest }}</h2>
+                <ul>
+                    {% for news in news_list %}
+                    <li><a href="{{ news.url }}" target="_blank" class="related-news-link">{{ news.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endfor %}
+
+            <p class=" introduce">猜你喜欢:</p>
+                {% for guess_interest, guess_news_list in guess_news_dict.items() %}
+                <h2>{{ guess_interest }}</h2>
+                <ul>
+                    {% for news in guess_news_list %}
+                    <li><a href="{{ news.url }}" target="_blank" class="related-news-link">{{ news.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endfor %}
+            <p class=" introduce">他们也在看:</p>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // 获取所有相关新闻链接的 DOM 元素
+        var relatedNewsLinks = document.querySelectorAll('.related-news-link');
+        // 遍历所有相关新闻链接，并为它们添加点击事件监听器
+        for (var i = 0; i < relatedNewsLinks.length; i++) {
+            relatedNewsLinks[i].addEventListener('click', function (event) {
+                // 阻止默认的跳转事件
+                event.preventDefault();
+                // 获取当前点击的新闻链接中的原链接
+                var newsUrl = this.href;
+                // 获取当前时间的时间戳
+                var timestamp = Date.now();
+                // 将时间戳转换为日期格式
+                var date = new Date(timestamp);
+                // 将日期格式转换为字符串格式
+                var dateString = date.toLocaleString();
+                // 发送 Ajax 请求，将用户的浏览记录插入到数据库中
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/log_history');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send('news_url=' + encodeURIComponent(newsUrl) + '&time=' + encodeURIComponent(dateString));
+                // Ajax 请求发送成功后，通过浏览器重定向到原链接
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        window.location.href = newsUrl;
+                    }
+                };
+            });
+        }
+        // Add collapse and expand functionality
+        var interestHeadings = document.querySelectorAll('.interests h2');
+
+        interestHeadings.forEach(function (heading) {
+            heading.addEventListener('click', function () {
+                // Toggle the visibility of the associated news list
+                var newsList = this.nextElementSibling;
+                newsList.style.display = newsList.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+        function refreshPage() {
+            location.reload();  // 刷新页面
+        }
+    </script>
+</body>
+
+</html>

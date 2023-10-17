@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ZH_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>兴趣选择页面</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <div class="main_card">
+        <div class="info_card">
+            <div class="container">
+                <div class="container_form container--signin">
+                    <h1>请选择你感兴趣的话题</h1>
+                    <form method="POST" action="{{ url_for('choose_interests') }}">
+                        <label><input type="checkbox" name="interests" value="体育"> 体育</label>
+                        <label><input type="checkbox" name="interests" value="政治"> 政治</label>
+                        <label><input type="checkbox" name="interests" value="娱乐"> 娱乐</label>
+                        <label><input type="checkbox" name="interests" value="科技"> 科技</label>
+                        <label><input type="checkbox" name="interests" value="经济"> 经济</label>
+                        <div class="submit-btn">
+                            <input type="submit" value="提交">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    body {
+        background-color: rgb(129, 216, 208, 0.7)
+    }
+
+    h1 {
+        color: #FFFFFF;
+        text-align: center;
+        margin-top: 100px;
+    }
+
+    form {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    form label {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 20px;
+    }
+
+    input[type="checkbox"] {
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #FFFFFF;
+        color: #00B4BF;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 25px;
+    }
+
+    .submit-btn {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    input[type="submit"]:hover {
+        color: #F00;
+    }
+
+    .main_card {
+        height: 100vh;
+        width: 70%;
+        border-bottom: 2px solid #ccc;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 2em;
+        position: absolute;
+        left: 15%;
+        top: 5%;
+    }
+
+    .info_card {
+        padding: 15px;
+
+    }
+
+    /* 标题 */
+    .form__title {
+        /* 字体粗细 */
+        padding-top: 45px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 1.25rem;
+    }
+
+    /* 主体DIV样式 */
+    .container {
+        border-radius: var(--button-radius);
+        /* 添加阴影效果 */
+        box-shadow: 0 0.9rem 1.7rem rgba(0, 0, 0, 0.25),
+            0 0.7rem 0.7rem rgba(0, 0, 0, 0.22);
+
+        height: var(--max-height);
+        max-width: var(--max-width);
+        overflow: hidden;
+        width: 50%;
+        left: 30%;
+        transform: translateY(20%);
+        margin-left: 25%;
+        background-color: #bce1e4;
+    }
+
+    /*注册框部分 */
+    .container__form {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        transition: all 0.6s ease-in-out;
+    }
+
+    .container--signin {
+        left: 0;
+        width: 100%;
+
+    }
+</style>
