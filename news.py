@@ -21,7 +21,11 @@ class News:
     # print(user_news.get_message("体育"))
 
     def get_message(self, news_type):
-        # 查询每个相同的type的url和title，放在两个列表中
+        """
+        查询每个相同的type的url和title，放在两个列表中
+        :param news_type:
+        :return:
+        """
         urls = []
         titles = []
         sql = "SELECT url, title FROM news WHERE type = %s"
@@ -31,10 +35,13 @@ class News:
             urls.append(row[0])
             titles.append(row[1])
         return urls, titles
-
-    # 根据输入的url在news数据库中查找他的type
-    # 用于后端在判断历史记录里面的新闻的种类，然后在推荐新闻
     def get_type(self, url):
+        """
+        根据输入的url在news数据库中查找他的type
+        用于后端在判断历史记录里面的新闻的种类，然后在推荐新闻
+        :param url:
+        :return:
+        """
         sql = "SELECT type FROM news WHERE url = %s"
         self.cursor.execute(sql, (url,))
         result = self.cursor.fetchone()
@@ -45,7 +52,13 @@ class News:
 
     # 写入数据的方法
     def insert_data(self, news_type, title, url):
+        """
         # 插入数据到news表中
+        :param news_type:
+        :param title:
+        :param url:
+        :return:
+        """
         sql = "INSERT INTO news (type, title, url) VALUES (%s, %s, %s)"
         self.cursor.execute(sql, (news_type, title, url))
         self.conn.commit()
